@@ -1,4 +1,4 @@
-import User from "../models/userModel.js";
+import User from "../models/user.model.js";
 
 // Save or update FCM token for a user
 export const saveOrUpdateToken = async (req, res) => {

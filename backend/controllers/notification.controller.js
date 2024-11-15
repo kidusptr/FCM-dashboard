@@ -1,5 +1,5 @@
 import { messaging } from "../configs/fcm_config.js";
-import User from "../models/userModel.js";
+import User from "../models/user.model.js";
 
 // Send notification to a single user by email
 export const sendToOneUser = async (req, res) => {
@@ -21,9 +21,10 @@ export const sendToOneUser = async (req, res) => {
     }
 
     const message = {
+      token:
+        "fcxCJWCSSkiQWATcNFoEXFQ:APA91bHFtnMsHq7MlbynnsAHZwEWCq19cvnAJb9YrEBu_8n3dybyNbiwsXNcXdsz6wo84KEvGDkj-jZRJ4LrenGch0xEEiqoYHwfE3xoTyTY4nxOICGaa0Q",
       notification: { title, body },
       data: { url: url || "", imageUrl: imageUrl || "" },
-      token: user.fcmToken,
     };
 
     const response = await messaging.send(message);

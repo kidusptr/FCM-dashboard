@@ -2,7 +2,7 @@ import express from "express";
 import {
   saveOrUpdateToken,
   getAllUsersWithTokens,
-} from "../controllers/userController.js";
+} from "../controllers/user.controller.js";
 
 const router = express.Router();
 

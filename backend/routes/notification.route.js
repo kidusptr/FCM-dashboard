@@ -2,7 +2,7 @@ import express from "express";
 import {
   sendToOneUser,
   sendToAllUsers,
-} from "../controllers/notificationController.js";
+} from "../controllers/notification.controller.js";
 
 const router = express.Router();
 
