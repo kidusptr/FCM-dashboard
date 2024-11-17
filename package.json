@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon backend/server.js",
     "build": "npm install",
-    "start": "node Backend/server.js"
+    "start": "node backend/server.js"
   },
   "type": "module",
   "keywords": [],
