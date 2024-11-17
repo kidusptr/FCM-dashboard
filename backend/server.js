@@ -11,11 +11,22 @@ const app = express();
 
 app.use(express.json()); // Parse JSON payloads
 
-//app.get("/", (req, res) => res.send("Hello World!!!"));
+app.get("/", (req, res) => res.send("Hello World!!!"));
 
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/notifications", notificationRoutes);
+
+// app.use( "/", (req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+//   );
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   next();
+
+// });
 
 app.listen(3000, async () => {
   await connectDB();
