@@ -4,16 +4,18 @@ import User from "../models/user.model.js";
 export const saveOrUpdateToken = async (req, res) => {
   const { email, name, fcmToken } = req.body;
 
-  if (!email || !fcmToken) {
+  if (!fcmToken) {
     return res.status(400).json({ error: "Email and FCM token are required" });
   }
 
   try {
-    let user = await User.findOne({ email });
+    let user = await User.findOne({ fcmToken });
 
     if (user) {
       // Update existing user's FCM token
       user.fcmToken = fcmToken;
+      user.name = name;
+      user.email = email;
       await user.save();
       return res
         .status(200)

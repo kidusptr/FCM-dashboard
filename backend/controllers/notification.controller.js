@@ -19,10 +19,9 @@ export const sendToOneUser = async (req, res) => {
         .status(404)
         .json({ error: "User not found or no FCM token available" });
     }
-
+    console.log(user);
     const message = {
-      token:
-        "fcxCJWCSSkiQWATcNFoEXFQ:APA91bHFtnMsHq7MlbynnsAHZwEWCq19cvnAJb9YrEBu_8n3dybyNbiwsXNcXdsz6wo84KEvGDkj-jZRJ4LrenGch0xEEiqoYHwfE3xoTyTY4nxOICGaa0Q",
+      token: user.fcmToken,
       notification: { title, body },
       data: { url: url || "", imageUrl: imageUrl || "" },
     };
