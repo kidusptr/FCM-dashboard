@@ -53,14 +53,16 @@ export const sendToAllUsers = async (req, res) => {
     }
 
     const tokens = users.map((user) => user.fcmToken);
-
+    console.log(tokens);
     const message = {
-      notification: { title, body },
+      notification: { title: title, body: body },
       data: { url: url || "", imageUrl: imageUrl || "" },
-      tokens,
+      tokens: tokens,
     };
 
-    const response = await messaging.sendMulticast(message);
+    console.log(message);
+
+    const response = await messaging.sendEachForMulticast(message);
     res
       .status(200)
       .json({ message: "Notifications sent successfully", response });
