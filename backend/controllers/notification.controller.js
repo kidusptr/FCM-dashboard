@@ -53,11 +53,11 @@ export const sendToAllUsers = async (req, res) => {
     }
 
     const tokens = users.map((user) => user.fcmToken);
-
+    console.log(tokens);
     const message = {
       notification: { title, body },
       data: { url: url || "", imageUrl: imageUrl || "" },
-      tokens,
+      tokens: tokens,
     };
 
     const response = await messaging.sendMulticast(message);
