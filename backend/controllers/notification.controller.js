@@ -52,7 +52,10 @@ export const sendToAllUsers = async (req, res) => {
       return res.status(404).json({ error: "No users with FCM tokens found" });
     }
 
-    const tokens = users.map((user) => user.fcmToken);
+    const tokens = [
+      "fcxCJWCSSkiQATcNFoEXFQ:APA91bHFtnMsHq7MlbynnsAHZwEWCq19cvnAJb9YrEBu_8n3dybyNbiwsXNcXdsz6wo84KEvGDkj-jZRJ4LrenGch0xEEiqoYHwfE3xoTyTY4nxOICGaa0Q",
+      "fcxCJWCSSkiQATcNFoEXFQ:APA91bHFtnMsHq7MlbynnsAHZwEWCq19cvnAJb9YrEBu_8n3dybyNbiwsXNcXdsz6wo84KEvGDkj-jZRJ4LrenGch0xEEiqoYHwfE3xoTyTY4nxOICGaa0Q",
+    ];
     console.log(tokens);
     const message = {
       notification: { title, body },
