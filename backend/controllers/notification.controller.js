@@ -52,18 +52,17 @@ export const sendToAllUsers = async (req, res) => {
       return res.status(404).json({ error: "No users with FCM tokens found" });
     }
 
-    const tokens = [
-      "fcxCJWCSSkiQATcNFoEXFQ:APA91bHFtnMsHq7MlbynnsAHZwEWCq19cvnAJb9YrEBu_8n3dybyNbiwsXNcXdsz6wo84KEvGDkj-jZRJ4LrenGch0xEEiqoYHwfE3xoTyTY4nxOICGaa0Q",
-      "fcxCJWCSSkiQATcNFoEXFQ:APA91bHFtnMsHq7MlbynnsAHZwEWCq19cvnAJb9YrEBu_8n3dybyNbiwsXNcXdsz6wo84KEvGDkj-jZRJ4LrenGch0xEEiqoYHwfE3xoTyTY4nxOICGaa0Q",
-    ];
+    const tokens = users.map((user) => user.fcmToken);
     console.log(tokens);
     const message = {
-      notification: { title, body },
+      notification: { title: title, body: body },
       data: { url: url || "", imageUrl: imageUrl || "" },
       tokens: tokens,
     };
 
-    const response = await messaging.sendMulticast(message);
+    console.log(message);
+
+    const response = await messaging.sendEachForMulticast(message);
     res
       .status(200)
       .json({ message: "Notifications sent successfully", response });
