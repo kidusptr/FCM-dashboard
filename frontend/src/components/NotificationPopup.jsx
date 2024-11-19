@@ -22,16 +22,16 @@ const NotificationPopup = ({ user, closePopup }) => {
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
       <div className="bg-white rounded-lg p-6 shadow-lg w-full max-w-md">
-        <h2 className="text-xl font-bold mb-4">
+        <h2 className="text-xl font-bold mb-4 text-black text-center">
           Send Notification{" "}
           {user === "all" ? "to All Users" : `to ${user.name}`}
         </h2>
         <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
           <div>
-            <label className="block font-medium">Title</label>
+            <label className="block font-medium text-black">Title</label>
             <input
               type="text"
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded bg-gray-300 text-black"
               placeholder="Enter title"
               value={notificationData.title}
               onChange={(e) =>
@@ -43,9 +43,9 @@ const NotificationPopup = ({ user, closePopup }) => {
             />
           </div>
           <div>
-            <label className="block font-medium">Body</label>
+            <label className="block font-medium text-black">Body</label>
             <textarea
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded bg-gray-300 text-black"
               placeholder="Enter message body"
               value={notificationData.body}
               onChange={(e) =>
@@ -57,10 +57,10 @@ const NotificationPopup = ({ user, closePopup }) => {
             ></textarea>
           </div>
           <div>
-            <label className="block font-medium">URL</label>
+            <label className="block font-medium text-black">URL</label>
             <input
               type="url"
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded  bg-gray-300 text-black"
               placeholder="Enter URL"
               value={notificationData.url}
               onChange={(e) =>
@@ -72,10 +72,10 @@ const NotificationPopup = ({ user, closePopup }) => {
             />
           </div>
           <div>
-            <label className="block font-medium">Image URL</label>
+            <label className="block font-medium text-black">Image URL</label>
             <input
               type="url"
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded bg-gray-300 text-black"
               placeholder="Enter Image URL"
               value={notificationData.imageUrl}
               onChange={(e) =>
