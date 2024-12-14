@@ -1,7 +1,7 @@
 import { messaging } from "../configs/fcm_config.js";
 import User from "../models/user.model.js";
 
-// Send notification to a single user by 
+// Send notification to a single user by FCM token
 export const sendToOneUser = async (req, res) => {
   const { email, title, body, url, imageUrl } = req.body;
 
