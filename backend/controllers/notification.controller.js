@@ -1,7 +1,7 @@
 import { messaging } from "../configs/fcm_config.js";
 import User from "../models/user.model.js";
 
-// Send notification to a single user by email
+// Send notification to a single user by FCM token
 export const sendToOneUser = async (req, res) => {
   const { email, title, body, url, imageUrl } = req.body;
 
@@ -21,9 +21,15 @@ export const sendToOneUser = async (req, res) => {
     }
     console.log(user);
     const message = {
+      notification: {
+        title: title,
+        body: body,
+        image: imageUrl,
+      },
+      data: {
+        url: url,
+      },
       token: user.fcmToken,
-      notification: { title, body },
-      data: { url: url || "", imageUrl: imageUrl || "" },
     };
 
     const response = await messaging.send(message);
@@ -55,8 +61,14 @@ export const sendToAllUsers = async (req, res) => {
     const tokens = users.map((user) => user.fcmToken);
     console.log(tokens);
     const message = {
-      notification: { title: title, body: body },
-      data: { url: url || "", imageUrl: imageUrl || "" },
+      notification: {
+        title: title,
+        body: body,
+        image: imageUrl,
+      },
+      data: {
+        url: url,
+      },
       tokens: tokens,
     };
 
